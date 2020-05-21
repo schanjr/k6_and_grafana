@@ -11,7 +11,7 @@ export default function getToken() {
   let callbackURL = "";
   let message = callbackURL + consumerkey + timestamp;
   let signed_signature = crypto.hmac('sha256', clientSecret, message, 'base64');
-  let oauthURL = 'https://enterprise-api-dev.autodesk.com/v2/oauth/generateaccesstoken?grant_type=client_credentials';
+  let oauthURL = 'https://enterprise-api-dev.<company>.com/v2/oauth/generateaccesstoken?grant_type=client_credentials';
 
   authHeader = encoding.b64encode(consumerkey + ":" + clientSecret, 'std');
   let param = {
