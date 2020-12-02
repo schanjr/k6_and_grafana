@@ -27,7 +27,8 @@ docker-compose up
 
 ##  Running Tests
 ```
-k6 run src/run.js
+# Creates k6 as the namespace when using grafana or graphite
+k6 run src/run.js --out statsd
 # If you want to change statsd namespace
 K6_STATSD_ADDR='localhost:8125' K6_STATSD_NAMESPACE='custom_name_space' k6 run src/run.js --out statsd
 ```

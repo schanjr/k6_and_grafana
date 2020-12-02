@@ -19,12 +19,13 @@ function call(token) {
 };
 
 export let options = {
-  max_vus: 3,
-  vus: 3,
+  // Other ways of specifying VUs if there are no stages.
+  // max_vus: 3,
+  // vus: 3,
   stages: [
-    { duration: "10s", target: 1 },
-    { duration: "50s", target: 2 },
-    { duration: "14m", target: 3 },
+    { duration: "30m", target: 100},
+    { duration: "15m", target: 70 },
+    { duration: "15m", target: 30 }
   ],
 };
 
@@ -35,6 +36,5 @@ export function setup() {
 
 export default function (token) {
   call(token);
-  sleep(1)
 }
 
