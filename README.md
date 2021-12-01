@@ -4,6 +4,7 @@ K6 is not as feature rich as JMeter, but is one of the fastest load testing tool
 
 ## References
 - https://docs.k6.io/docs/running-k6
+- https://github.com/grafana/k6/releases
 - https://grafana.com/
 - https://github.com/statsd/statsd
 - https://k6.io/blog/how-to-do-10-things-in-jmeter-vs-k6
