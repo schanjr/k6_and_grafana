@@ -1,7 +1,8 @@
 ## Description
 A template repository for setting up a load testing tool called k6 and visualizing it later using grafana.
 Some visualization examples are already prepared in this repository for ease of use.
-![](assets/Screenshot 2022-01-16 at 8.24.38 PM.png)
+![](assets/dashboards.png)
+
 
 ##  Installation
 ```$xslt
