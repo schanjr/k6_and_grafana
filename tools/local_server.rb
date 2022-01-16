@@ -5,6 +5,10 @@ require 'socket'
 class LocalServer
   @servers ||= {}
   @mock_responses ||= {}
+  @response_probabilities = {
+    0.05 => 'internal_error',
+    0.1 => 'not_found_response'
+  }
 
   class << self
     def default_response
@@ -13,6 +17,24 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {"message":"default good response"}
+      HEREDOC
+    end
+
+    def not_found_response
+      <<-HEREDOC
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+
+{"message":"not found"}
+      HEREDOC
+    end
+
+    def internal_error
+      <<-HEREDOC
+HTTP/1.1 500 Internal Error
+Content-Type: application/json
+
+{"message":"internal error"}
       HEREDOC
     end
 
@@ -28,6 +50,17 @@ Content-Type: application/json
       @mock_responses["#{verb}-#{path}"] = response
     end
 
+    def response
+      curr_decimal = rand
+      @response_probabilities.keys.each do |k|
+        if curr_decimal < (1-k)
+          return  send(@response_probabilities[k].to_sym)
+        end
+      end
+      # probability was never lower than the assigned, so return 200 by default
+      default_response
+    end
+
     def start_server(port = 31000)
       return servers unless port_open?(port)
       server = TCPServer.open(port)
@@ -41,7 +74,7 @@ Content-Type: application/json
           puts "Incoming request headers -- \"#{request.chomp}\"" # the server logs each response
         end
         if @mock_responses["#{verb}-#{path}"].nil?
-          socket.write(default_response)
+          socket.write(response)
         else
           socket.write(@mock_responses["#{verb}-#{path}"])
         end

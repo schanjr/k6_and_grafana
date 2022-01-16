@@ -4,11 +4,15 @@
   "version": "1.7.13",
   "main": "src/run.js",
   "scripts": {
-    "build": "webpack"
+    "install": "webpack",
+    "start:localserver": "ruby tools/local_server.rb",
+    "start:grafana": "docker-compose up",
+    "stop:grafana": "docker-compose down",
+    "start": "k6 run src/run.js --out statsd"
   },
   "engines": {
-    "node": "8.10",
-    "npm": "3.14.0"
+    "node": "14.18.1",
+    "npm": "8.1.4"
   },
   "license": "LicenseRef-LICENSE",
   "dependencies": {

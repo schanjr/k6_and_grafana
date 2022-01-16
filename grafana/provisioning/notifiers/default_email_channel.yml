@@ -1,0 +1,14 @@
+notifiers:
+  - name: user_email
+    id: 2
+    type: email
+    uid: g4M-zLmGk
+    org_id: 1
+    org_name: Main Org.
+    is_default: true
+    send_reminder: false
+    disable_resolve_message: false
+    settings:
+      addresses: 'user_email@hgmail.com'
+      singleEmail: true
+      uploadImage: true
