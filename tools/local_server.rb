@@ -53,7 +53,7 @@ Content-Type: application/json
     def response
       curr_decimal = rand
       @response_probabilities.keys.each do |k|
-        if curr_decimal < (1-k)
+        if (k) > curr_decimal
           return  send(@response_probabilities[k].to_sym)
         end
       end
