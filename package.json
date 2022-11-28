@@ -11,8 +11,8 @@
     "start": "k6 run src/run.js --out statsd"
   },
   "engines": {
-    "node": "14.18.1",
-    "npm": "8.1.4"
+    "node": "18.3.0",
+    "npm": "8.12.1"
   },
   "license": "LicenseRef-LICENSE",
   "dependencies": {
