@@ -8,7 +8,7 @@ COPY ./provisioning /etc/grafana/provisioning
 COPY ./grafana.ini /etc/grafana/grafana.ini
 COPY ./dashboards /var/lib/grafana/dashboards
 
-ARG GF_INSTALL_IMAGE_RENDERER_PLUGIN="true"
+#ARG GF_INSTALL_IMAGE_RENDERER_PLUGIN="true"
 RUN if [ $GF_INSTALL_IMAGE_RENDERER_PLUGIN = "true" ]; then \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
